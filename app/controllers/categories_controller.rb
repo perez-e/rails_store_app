@@ -13,9 +13,9 @@ class CategoriesController < ApplicationController
 
 	def create
 		category = params[:category].permit(:name)
-		Category.create(category)
+		c = Category.create(category)
 
-		redirect_to "/categories"
+		redirect_to category_path(c)
 	end
 
 	def edit

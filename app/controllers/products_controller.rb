@@ -12,41 +12,44 @@ class ProductsController < ApplicationController
 	end
 
 	def new
+		@categories = Category.all
 	end
 
 	def create
 		product = params[:product].permit(:name, :description, :price)
-		p = Product.create(product)
+		name, description, price = product[:name], product[:description], product[:price].to_f
+		p = Product.create(name: name, description: description, price: price)
 
 		params[:categories].each do |category_id|
 			c = Category.find(category_id)
 			p.categories << c
 		end
 
-		redirect_to "/products"
+		redirect_to product_path(p)
 	end
 
 	def edit
 		id = params[:id]
 		@product = Product.find(id)
+		@categories = Category.all
 	end
 
 	def update
 		id = params[:id]
-		product = Product.find(id)
-		product.name = params[:product][:name]
-		product.price = params[:product][:price]
-		product.description = params[:product][:description]
-		product.save
+		p = Product.find(id)
+		p.name = params[:product][:name]
+		p.price = params[:product][:price].to_f
+		p.description = params[:product][:description]
+		p.save
 
-		product.categories.destroy
+		p.categories.clear
 
 		params[:categories].each do |category_id|
 			c = Category.find(category_id)
-			product.categories << c
+			p.categories << c
 		end
 
-		redirect_to product_path(product)
+		redirect_to product_path(p)
 	end
 
 	def destroy
