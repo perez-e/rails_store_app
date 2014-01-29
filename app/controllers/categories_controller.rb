@@ -10,4 +10,11 @@ class CategoriesController < ApplicationController
 
 	def new
 	end
+
+	def create
+		category = params[:category].permit(:name)
+		Category.create(category)
+		
+		redirect_to "/categories"
+	end
 end

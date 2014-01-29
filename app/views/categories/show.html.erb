@@ -5,3 +5,5 @@
 		<li><%= link_to product.name, product_path(product) %></li>
 	<% end %>
 </ul>
+
+<%= button_to "Edit", "/categories/#{@category.id}/edit", method: :get %>

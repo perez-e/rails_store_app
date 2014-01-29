@@ -5,6 +5,7 @@ RailStore::Application.routes.draw do
     get "/products/:id", to: "products#show", as: :product
 
     get "/categories", to: "categories#index"
-    get "/categories/:id", to: "categories#show", as: :category
     get "/categories/new", to: "categories#new"
+    get "/categories/:id", to: "categories#show", as: :category
+    post "/categories", to: "categories#create"
 end
