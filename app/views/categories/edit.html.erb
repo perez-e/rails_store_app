@@ -1,0 +1,13 @@
+<h1>Edit Category: <%= @category.name %></h1>
+
+<%= form_for :category, url: "/categories/#{@category.id}", method: :patch do |f| %>
+	<div class="form-group">
+		<%= f.label "Name" %>
+		<%= f.text_field :name, value: "#{@category.name}" %>
+	</div>
+	<%= f.submit "Submit!" %>
+<% end %>
+
+<%= link_to "Want to Cancel?", "/categories" %>
+
+	

@@ -7,3 +7,5 @@
 </ul>
 
 <%= button_to "Edit", "/categories/#{@category.id}/edit", method: :get %>
+<%= button_to "Delete", "/categories/#{@category.id}", method: :delete %>
+<%= button_to "View All", "/categories", method: :get %>
