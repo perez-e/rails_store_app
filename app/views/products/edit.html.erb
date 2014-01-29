@@ -1,6 +1,6 @@
 <h1>Edit <%= @product.name %></h1>
 
-<%= form_for :product, url: product_path(@product), method: :patch do |f| %>
+<%= form_for :product, url: "/products/#{@product.id}", method: :patch do |f| %>
 	<div class="form-group">
 		<%= f.label "Name" %>
 		<%= f.text_field :name, placeholder: "Enter Product", value: @product.name %>
@@ -30,7 +30,7 @@
 
 	</div>
 
-	<%= f.submit "Submit!" %>
+	<%= f.submit "Submit!", class: "btn btn-default" %>
 <% end %>
 
 <%= link_to "Want to Cancel?", "/products" %>

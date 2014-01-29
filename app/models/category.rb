@@ -11,4 +11,6 @@
 class Category < ActiveRecord::Base
 	has_many :combos
 	has_many :products, through: :combos
+
+	validates :name, presence: true
 end

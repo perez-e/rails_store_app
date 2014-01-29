@@ -13,4 +13,8 @@
 class Product < ActiveRecord::Base
 	has_many :combos
 	has_many :categories, through: :combos
+
+	validates :name, presence: true, length: {maximum: 25}
+	validates :description, presence: true, length: {maximum: 255}
+	validates :price, presence: true, numericality: true
 end
