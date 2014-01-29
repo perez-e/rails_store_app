@@ -7,4 +7,7 @@ class CategoriesController < ApplicationController
 		id = params[:id]
 		@category = Category.find(id)
 	end
+
+	def new
+	end
 end
